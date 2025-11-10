@@ -1,0 +1,168 @@
+---
+title: User Registration API - Python Class Diagram
+---
+
+%% GH Copilot code - starts
+classDiagram
+    class User {
+        +str id
+        +str email
+        +str password_hash
+        +str name
+        +Address address
+        +str phone_number
+        +bool email_verified
+        +str status
+        +str role
+        +set_password(password)
+        +check_password(password)
+    }
+    class UserDTO {
+        +str email
+        +str password
+        +str name
+        +str phone_number
+        +Address address
+        +to_entity()
+    }
+    class Address {
+        +str type
+        +str line1
+        +str line2
+        +str city
+        +str state
+        +str postal_code
+        +str country
+        +bool is_default
+        +str phone_number
+        +validate()
+    }
+    class UserRegistrationAPI {
+        +Flask Blueprint blueprint
+        +UserRegistrationService registration_service
+        +register()
+    }
+    class UserRegistrationService {
+        +UserRepository user_repo
+        +AddressRepository address_repo
+        +PasswordHasher password_hasher
+        +EmailService email_service
+        +ValidationService validation_service
+        +EmailVerificationService verification_service
+        +DatabaseSessionManager db_session_manager
+        +register_user(user_dto)
+        +rollback_on_failure()
+    }
+    class EmailVerificationToken {
+        +str id
+        +str token
+        +str user_id
+        +datetime expires_at
+        +datetime created_at
+        +datetime used_at
+        +bool is_used
+        +is_expired()
+        +is_valid()
+        +mark_as_used()
+    }
+    class EmailVerificationService {
+        +EmailVerificationTokenRepository token_repository
+        +UserRepository user_repository
+        +EmailService email_service
+        +TokenGenerator token_generator
+        +generate_verification_token(user)
+        +send_verification_email(user)
+        +verify_email_token(token)
+        +resend_verification_email(email)
+    }
+    class UserEmailVerificationAPI {
+        +EmailVerificationService verification_service
+        +verify_email()
+        +resend_verification()
+    }
+    class UserRepository {
+        +DatabaseSessionManager db_session
+        +add_user(user)
+        +get_user_by_email(email)
+        +user_exists(email)
+    }
+    class AddressRepository {
+        +DatabaseSessionManager db_session
+        +add_address(address)
+        +get_addresses_by_user(user_id)
+    }
+    class ValidationService {
+        +dict rules
+        +validate_user_data(user_dto)
+        +validate_address(address)
+    }
+    class EmailService {
+        +Config config
+        +send_registration_email(user)
+    }
+    class PasswordHasher {
+        +str algorithm
+        +hash_password(password)
+        +verify_password(password, hash)
+    }
+    class ErrorResponse {
+        +int code
+        +str message
+        +dict details
+        +to_dict()
+    }
+    class Logger {
+        +str log_level
+        +log(message, level)
+        +error(message)
+    }
+    class Config {
+        +str db_uri
+        +dict email_settings
+        +get(key)
+    }
+    class DatabaseSessionManager {
+        +str connection_string
+        +session
+        +get_session()
+        +commit()
+        +rollback()
+    }
+
+    UserDTO --> Address
+    User --> Address
+    UserDTO --> User : to_entity()
+    UserRegistrationAPI --> UserRegistrationService
+    UserRegistrationAPI --> ErrorResponse
+    UserRegistrationAPI --> UserDTO
+    UserRegistrationService --> UserRepository
+    UserRegistrationService --> AddressRepository
+    UserRegistrationService --> PasswordHasher
+    UserRegistrationService --> EmailService
+    UserRegistrationService --> ValidationService
+    UserRegistrationService --> UserDTO
+    UserRegistrationService --> EmailVerificationService
+    UserRepository --> User
+    UserRepository --> DatabaseSessionManager
+    AddressRepository --> Address
+    AddressRepository --> DatabaseSessionManager
+    ValidationService --> UserDTO
+    ValidationService --> Address
+    EmailService --> User
+    EmailService --> Config
+    PasswordHasher --> User
+    Logger <.. UserRegistrationAPI
+    Logger <.. UserRegistrationService
+    Logger <.. UserRepository
+    Logger <.. AddressRepository
+    Logger <.. ValidationService
+    Logger <.. EmailService
+    Logger <.. PasswordHasher
+    Logger <.. ErrorResponse
+    Logger <.. Config
+    Logger <.. DatabaseSessionManager
+    Config --> EmailService
+    Config --> DatabaseSessionManager
+    DatabaseSessionManager <.. UserRepository
+    DatabaseSessionManager <.. AddressRepository
+%% GH Copilot code - end

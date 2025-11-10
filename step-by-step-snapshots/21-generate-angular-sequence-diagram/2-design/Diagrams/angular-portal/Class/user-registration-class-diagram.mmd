@@ -1,0 +1,120 @@
+---
+title: User Registration UI Class Diagram
+---
+
+%% GH Copilot code - starts
+classDiagram
+    class UserRegistrationComponent {
+        +registrationForm: FormGroup
+        +isSubmitting: boolean
+        +errorMessage: string | null
+        +successMessage: string | null
+        +ngOnInit()
+        +onSubmit()
+        +handleSuccess(response: UserRegistrationResponse)
+        +handleError(error: ApiError)
+    }
+    class RegistrationFormComponent {
+        +form: FormGroup
+    +fields: string[]
+    +validationMessages: object
+        +buildForm()
+        +getFieldError(field: string): string | null
+        +resetForm()
+    }
+    class RegistrationSuccessComponent {
+        +message: string
+        +showMessage()
+        +navigateToLogin()
+    }
+    class RegistrationErrorComponent {
+        +error: string
+        +showError()
+        +retryRegistration()
+    }
+    class UserRegistrationService {
+        +apiUrl: string
+    +registerUser(request: UserRegistrationRequest): UserRegistrationResponse
+        +handleApiError(error: any): ApiError
+    }
+    class UserRegistrationRequest {
+        +email: string
+        +password: string
+        +name: string
+        +address: Address
+        +phoneNumber: string
+    }
+    class UserRegistrationResponse {
+        +userId: string
+        +message: string
+        +emailVerified: boolean
+        +status: string
+        +role: string
+    }
+    class ApiService {
+        +baseUrl: string
+    +post(url: string, body: any): object
+    +get(url: string): object
+        +handleError(error: any): ApiError
+    }
+    class ApiError {
+        +error: string
+        +details: string
+    }
+    class NotificationService {
+        +showSuccess(message: string)
+        +showError(message: string)
+        +showInfo(message: string)
+    }
+    class FormValidationService {
+        +validateEmail(email: string): boolean
+        +validatePassword(password: string): boolean
+        +validatePhone(phone: string): boolean
+        +validateAddress(address: Address): boolean
+    }
+    class AddressInputComponent {
+        +addressForm: FormGroup
+        +address: Address
+        +buildAddressForm()
+        +getAddressValue(): Address
+        +validateAddress()
+    }
+    class Address {
+        +type: string
+        +line1: string
+        +line2: string
+        +city: string
+        +state: string
+        +postalCode: string
+        +country: string
+        +isDefault: boolean
+        +phoneNumber: string
+    }
+    class PhoneInputComponent {
+        <<component>>
+    }
+
+    UserRegistrationComponent --> RegistrationFormComponent
+    UserRegistrationComponent --> UserRegistrationService
+    UserRegistrationComponent --> NotificationService
+    UserRegistrationComponent --> RegistrationSuccessComponent
+    UserRegistrationComponent --> RegistrationErrorComponent
+    UserRegistrationComponent --> UserRegistrationRequest
+    UserRegistrationComponent --> UserRegistrationResponse
+    UserRegistrationComponent --> ApiError
+    RegistrationFormComponent --> FormValidationService
+    RegistrationFormComponent --> AddressInputComponent
+    RegistrationFormComponent --> PhoneInputComponent
+    RegistrationFormComponent --> UserRegistrationRequest
+    RegistrationSuccessComponent --> NotificationService
+    RegistrationErrorComponent --> NotificationService
+    UserRegistrationService --> ApiService
+    UserRegistrationService --> UserRegistrationRequest
+    UserRegistrationService --> UserRegistrationResponse
+    UserRegistrationService --> ApiError
+    AddressInputComponent --> Address
+    FormValidationService --> Address
+    ApiService --> ApiError
+    RegistrationErrorComponent --> ApiError
+    UserRegistrationRequest --> Address
+%% GH Copilot code - end

@@ -1,0 +1,30 @@
+---
+title: User Registration API Sequence Diagram
+---
+
+%% GH Copilot code - starts
+sequenceDiagram
+    participant Client
+    participant UserRegistrationAPI
+    participant UserRegistrationService
+    participant UserDTO
+    participant PasswordHasher
+    participant EmailService
+    participant DatabaseSessionManager
+    participant UserRepository
+    participant Logger
+
+    Client->>UserRegistrationAPI: POST /register (user data)
+    UserRegistrationAPI->>Logger: Log request
+    UserRegistrationAPI->>UserDTO: Validate & map user data
+    UserRegistrationAPI->>UserRegistrationService: register_user(user_dto)
+    UserRegistrationService->>PasswordHasher: Hash password
+    UserRegistrationService->>DatabaseSessionManager: Open DB session
+    UserRegistrationService->>UserRepository: Save user
+    UserRepository->>DatabaseSessionManager: Execute insert
+    UserRegistrationService->>EmailService: Send welcome email
+    EmailService->>UserDTO: Get email address
+    UserRegistrationService->>Logger: Log registration success/failure
+    UserRegistrationService->>DatabaseSessionManager: Close DB session
+    UserRegistrationAPI->>Client: Return success or error response
+%% GH Copilot code - end

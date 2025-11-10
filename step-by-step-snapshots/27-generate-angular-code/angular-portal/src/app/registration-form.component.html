@@ -1,0 +1,33 @@
+<!-- GH Copilot code - starts -->
+<form [formGroup]="form" class="registration-form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="email">Email</label>
+  <input id="email" name="email" formControlName="email" type="email" class="form-control" required />
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="validation-error">
+      Invalid email
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+  <input id="password" name="password" formControlName="password" type="password" class="form-control" required />
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+  <input id="name" name="name" formControlName="name" type="text" class="form-control" required />
+  </div>
+  <div class="form-group" formGroupName="address">
+    <label for="address">Address</label>
+  <input id="address.line1" name="address.line1" formControlName="line1" type="text" class="form-control" required />
+  <input id="address.city" name="address.city" formControlName="city" type="text" class="form-control" required />
+  <input id="address.state" name="address.state" formControlName="state" type="text" class="form-control" required />
+  <input id="address.postalCode" name="address.postalCode" formControlName="postalCode" type="text" class="form-control" required />
+  <input id="address.country" name="address.country" formControlName="country" type="text" class="form-control" required />
+  <input id="address.isDefault" name="address.isDefault" formControlName="isDefault" type="checkbox" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+  <input id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" type="tel" class="form-control" required />
+  </div>
+  <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Register</button>
+</form>
+<!-- GH Copilot code - end -->

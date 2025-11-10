@@ -1,0 +1,33 @@
+---
+title: ShopSphere System Context Diagram
+---
+
+flowchart LR
+    Customer([Customer])
+    Seller([Seller])
+    Admin([Admin])
+    ShopSphere([ShopSphere E-Commerce System])
+    PaymentGateway([Payment Gateway])
+    ShippingProvider([Shipping Provider])
+    SocialLogin([Social Login Provider])
+    EmailService([Email Service Provider])
+    Analytics([Analytics Tools])
+    FraudDetection([Fraud Detection Service])
+    ComplianceAPI([Compliance APIs])
+    Database([Database])
+    CacheCDN([Cache/CDN])
+
+    Customer <--> ShopSphere
+    Seller <--> ShopSphere
+    Admin <--> ShopSphere
+
+    ShopSphere <--> PaymentGateway
+    ShopSphere <--> ShippingProvider
+    ShopSphere <--> SocialLogin
+    ShopSphere <--> EmailService
+    ShopSphere <--> Analytics
+    ShopSphere <--> FraudDetection
+    ShopSphere <--> ComplianceAPI
+
+    ShopSphere --> Database
+    ShopSphere --> CacheCDN

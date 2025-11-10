@@ -1,0 +1,156 @@
+# GH Copilot code - starts
+openapi: 3.0.3
+info:
+  title: ShopSphere User Registration API
+  version: 1.0.0
+  description: |
+    API for user registration, email verification, and error handling in ShopSphere.
+    Covers all positive, negative, and corner cases as per Gherkin scenarios and database schema.
+servers:
+  - url: /api/v1
+paths:
+  /users/register:
+    post:
+      summary: Register a new user
+      description: |
+        Registers a new user with required details. Email verification is required before login.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - name
+                - addressLine1
+                - city
+                - state
+                - postalCode
+                - country
+                - phoneNumber
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+                name:
+                  type: string
+                addressLine1:
+                  type: string
+                addressLine2:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                postalCode:
+                  type: string
+                country:
+                  type: string
+                phoneNumber:
+                  type: string
+      responses:
+        '201':
+          description: User registered successfully, verification email sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Please check your email to verify your account
+                  userId:
+                    type: string
+                  emailVerified:
+                    type: boolean
+                    example: false
+                  status:
+                    type: string
+                    example: Active
+                  role:
+                    type: string
+                    example: Customer
+        '400':
+          description: Invalid input (missing/invalid fields)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Email already registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too many registration attempts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/verify-email:
+    post:
+      summary: Verify user email
+      description: Verifies a user's email using a token sent via email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          description: Email verified successfully, account activated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Email verified successfully
+                  emailVerified:
+                    type: boolean
+                    example: true
+                  status:
+                    type: string
+                    example: Active
+        '400':
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Email already verified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        details:
+          type: string
+# GH Copilot code - end

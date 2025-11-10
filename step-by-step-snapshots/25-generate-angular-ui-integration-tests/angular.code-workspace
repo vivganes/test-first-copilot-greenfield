@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "angular-portal"
+		},
+		{
+			"path": "2-design"
+		},
+		{
+			"path": "db"
+		},
+		{
+			"path": "end-end-tests"
+		}
+	]
+}

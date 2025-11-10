@@ -1,0 +1,36 @@
+---
+title: User Registration UI Sequence Diagram (Angular)
+---
+
+%% GH Copilot code - starts
+sequenceDiagram
+    participant User
+    participant UserRegistrationComponent
+    participant RegistrationFormComponent
+    participant FormValidationService
+    participant ApiService
+    participant NotificationService
+    participant RegistrationSuccessComponent
+    participant RegistrationErrorComponent
+
+    User->>UserRegistrationComponent: Initiates registration
+    UserRegistrationComponent->>RegistrationFormComponent: Display registration form
+    User->>RegistrationFormComponent: Enter registration details
+    RegistrationFormComponent->>FormValidationService: Validate form inputs
+    FormValidationService-->>RegistrationFormComponent: Return validation result
+    alt Valid inputs
+        RegistrationFormComponent->>UserRegistrationComponent: Submit registration data
+        UserRegistrationComponent->>UserRegistrationService: Register user
+        UserRegistrationService->>ApiService: Send registration request
+        ApiService-->>UserRegistrationService: Return success response
+        UserRegistrationService-->>UserRegistrationComponent: Return registration result
+        UserRegistrationComponent->>NotificationService: Show success notification
+        NotificationService-->>User: Display success message
+        UserRegistrationComponent->>RegistrationSuccessComponent: Show success UI
+    else Invalid inputs
+        FormValidationService-->>RegistrationFormComponent: Return error(s)
+        RegistrationFormComponent->>NotificationService: Show error notification
+        NotificationService-->>User: Display error message
+        RegistrationFormComponent->>RegistrationErrorComponent: Show error UI
+    end
+%% GH Copilot code - end

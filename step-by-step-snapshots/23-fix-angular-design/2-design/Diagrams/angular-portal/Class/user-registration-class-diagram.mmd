@@ -1,0 +1,153 @@
+---
+title: User Registration UI Class Diagram
+---
+%% GH Copilot code - starts
+classDiagram
+    class UserRegistrationComponent {
+        +registrationForm: FormGroup
+        +isSubmitting: boolean
+        +errorMessage: string | null
+        +successMessage: string | null
+        +ngOnInit()
+        +onSubmit()
+        +handleSuccess(response: UserRegistrationResponse)
+        +handleError(error: ApiError)
+    }
+    class RegistrationFormComponent {
+        +form: FormGroup
+        +fields: string[]
+        +validationMessages: object
+        +buildForm()
+        +getFieldError(field: string): string | null
+        +resetForm()
+    }
+    class UserRegistrationService {
+        +apiUrl: string
+        +registerUser(request: UserRegistrationRequest): Observable<UserRegistrationResponse>
+        +handleApiError(error: any): ApiError
+    }
+    class ApiService {
+        +baseUrl: string
+        +post<T>(url: string, body: any): Observable<T>
+        +get<T>(url: string): Observable<T>
+        +handleError(error: any): ApiError
+    }
+    class FormValidationService {
+        +validateEmail(email: string): boolean
+        +validatePassword(password: string): ValidationResult
+        +getPasswordRequirements(): string[]
+        +checkPasswordStrength(password: string): PasswordStrength
+        +getPasswordErrors(password: string): string[]
+        +validatePhone(phone: string): boolean
+        +validateAddress(address: Address): boolean
+    }
+    class NotificationService {
+        +showSuccess(message: string)
+        +showError(message: string)
+        +showInfo(message: string)
+    }
+    class RegistrationSuccessComponent {
+        +message: string
+        +showMessage()
+        +navigateToLogin()
+    }
+    class RegistrationErrorComponent {
+        +error: string
+        +showError()
+        +retryRegistration()
+    }
+    class AddressInputComponent {
+        +addressForm: FormGroup
+        +address: Address
+        +buildAddressForm()
+        +getAddressValue(): Address
+        +validateAddress()
+    }
+    class PhoneInputComponent {
+        +phoneForm: FormControl
+        +countryCode: string
+        +isValid: boolean
+        +errorMessage: string
+        +validatePhoneNumber(): boolean
+        +formatPhoneNumber(): string
+        +getCountryCode(): string
+        +handlePhoneInput(value: string): void
+    }
+    class EmailVerificationComponent {
+        +verificationToken: string
+        +verificationStatus: VerificationStatus
+        +isLoading: boolean
+        +errorMessage: string
+        +ngOnInit()
+        +verifyEmail(token: string): Observable<VerificationResult>
+        +handleVerificationSuccess()
+        +handleVerificationError(error: ApiError)
+        +redirectToLogin()
+    }
+    class EmailVerificationService {
+        +verifyEmailToken(token: string): Observable<VerificationResult>
+        +resendVerificationEmail(email: string): Observable<void>
+    }
+    class UserRegistrationRequest {
+        +email: string
+        +password: string
+        +name: string
+        +address: Address
+        +phoneNumber: string
+    }
+    class UserRegistrationResponse {
+        +userId: string
+        +message: string
+        +emailVerified: boolean
+        +status: string
+        +role: string
+    }
+    class Address {
+        +type: string
+        +line1: string
+        +line2: string
+        +city: string
+        +state: string
+        +postalCode: string
+        +country: string
+        +isDefault: boolean
+        +phoneNumber: string
+    }
+    class ApiError {
+        +error: string
+        +details: string
+    }
+    class VerificationStatus {
+        PENDING
+        SUCCESS
+        FAILED
+        EXPIRED
+    }
+
+    UserRegistrationComponent --> RegistrationFormComponent
+    UserRegistrationComponent --> UserRegistrationService
+    UserRegistrationComponent --> NotificationService
+    UserRegistrationComponent --> RegistrationSuccessComponent
+    UserRegistrationComponent --> RegistrationErrorComponent
+    UserRegistrationComponent --> UserRegistrationRequest
+    UserRegistrationComponent --> UserRegistrationResponse
+    UserRegistrationComponent --> ApiError
+    RegistrationFormComponent --> FormValidationService
+    RegistrationFormComponent --> AddressInputComponent
+    RegistrationFormComponent --> PhoneInputComponent
+    RegistrationFormComponent --> UserRegistrationRequest
+    RegistrationSuccessComponent --> NotificationService
+    RegistrationErrorComponent --> NotificationService
+    UserRegistrationService --> ApiService
+    UserRegistrationService --> UserRegistrationRequest
+    UserRegistrationService --> UserRegistrationResponse
+    UserRegistrationService --> ApiError
+    AddressInputComponent --> Address
+    FormValidationService --> Address
+    ApiService --> ApiError
+    RegistrationErrorComponent --> ApiError
+    UserRegistrationRequest --> Address
+    EmailVerificationComponent --> EmailVerificationService
+    EmailVerificationComponent --> VerificationStatus
+    EmailVerificationComponent --> ApiError
+%% GH Copilot code - end
