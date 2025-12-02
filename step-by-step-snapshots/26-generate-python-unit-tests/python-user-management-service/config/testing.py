@@ -1,3 +1,0 @@
-TESTING = True
-SQLALCHEMY_DATABASE_URI = "sqlite:///../db/test-db.sqlite3"
-SQLALCHEMY_TRACK_MODIFICATIONS = False

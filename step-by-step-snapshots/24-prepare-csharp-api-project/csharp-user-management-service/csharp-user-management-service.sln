@@ -1,0 +1,278 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{2F9CEE4B-7266-AAB5-E2CD-997F68F443A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-Tests", "API-Tests\API-Tests.csproj", "{38C469E6-EF3C-00F7-F7E2-BB0AA7DC517E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-requirements", "0-requirements", "{05063987-5BE9-4814-B22E-F6856FE3C07C}"
+	ProjectSection(SolutionItems) = preProject
+		..\0-requirements\requirements.md = ..\0-requirements\requirements.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "user-stories", "user-stories", "{CC6675D2-CA88-4A53-AE90-B89713C2C925}"
+	ProjectSection(SolutionItems) = preProject
+		..\0-requirements\user-stories\user-management.md = ..\0-requirements\user-stories\user-management.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-architecture", "1-architecture", "{6E44391A-394F-4B6F-8238-CEABCCC97D72}"
+	ProjectSection(SolutionItems) = preProject
+		..\1-architecture\0-system-context.md = ..\1-architecture\0-system-context.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Containers", "Containers", "{34D10163-6057-4953-982F-C0186A67C679}"
+	ProjectSection(SolutionItems) = preProject
+		..\1-architecture\Containers\APIGateway.md = ..\1-architecture\Containers\APIGateway.md
+		..\1-architecture\Containers\AdminUI.md = ..\1-architecture\Containers\AdminUI.md
+		..\1-architecture\Containers\AnalyticsAuditService.md = ..\1-architecture\Containers\AnalyticsAuditService.md
+		..\1-architecture\Containers\AuthenticationService.md = ..\1-architecture\Containers\AuthenticationService.md
+		..\1-architecture\Containers\BannerContentManagementService.md = ..\1-architecture\Containers\BannerContentManagementService.md
+		..\1-architecture\Containers\ComplianceRegionalizationService.md = ..\1-architecture\Containers\ComplianceRegionalizationService.md
+		..\1-architecture\Containers\CurrencyExchangeRateService.md = ..\1-architecture\Containers\CurrencyExchangeRateService.md
+		..\1-architecture\Containers\FileDocumentManagementService.md = ..\1-architecture\Containers\FileDocumentManagementService.md
+		..\1-architecture\Containers\FraudDetectionIntegrationService.md = ..\1-architecture\Containers\FraudDetectionIntegrationService.md
+		..\1-architecture\Containers\InventoryService.md = ..\1-architecture\Containers\InventoryService.md
+		..\1-architecture\Containers\NotificationService.md = ..\1-architecture\Containers\NotificationService.md
+		..\1-architecture\Containers\OrderService.md = ..\1-architecture\Containers\OrderService.md
+		..\1-architecture\Containers\PaymentService.md = ..\1-architecture\Containers\PaymentService.md
+		..\1-architecture\Containers\ProductService.md = ..\1-architecture\Containers\ProductService.md
+		..\1-architecture\Containers\PromotionService.md = ..\1-architecture\Containers\PromotionService.md
+		..\1-architecture\Containers\QueueBackgroundProcessingService.md = ..\1-architecture\Containers\QueueBackgroundProcessingService.md
+		..\1-architecture\Containers\ReviewRatingService.md = ..\1-architecture\Containers\ReviewRatingService.md
+		..\1-architecture\Containers\ScheduledTaskBackgroundJobService.md = ..\1-architecture\Containers\ScheduledTaskBackgroundJobService.md
+		..\1-architecture\Containers\SearchIndexingService.md = ..\1-architecture\Containers\SearchIndexingService.md
+		..\1-architecture\Containers\SellerDashboardUI.md = ..\1-architecture\Containers\SellerDashboardUI.md
+		..\1-architecture\Containers\ShippingService.md = ..\1-architecture\Containers\ShippingService.md
+		..\1-architecture\Containers\ShoppingCartService.md = ..\1-architecture\Containers\ShoppingCartService.md
+		..\1-architecture\Containers\StorefrontUI.md = ..\1-architecture\Containers\StorefrontUI.md
+		..\1-architecture\Containers\SupportService.md = ..\1-architecture\Containers\SupportService.md
+		..\1-architecture\Containers\UserService.md = ..\1-architecture\Containers\UserService.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{6145CC25-5A07-4B2A-84B6-F0C37197860F}"
+	ProjectSection(SolutionItems) = preProject
+		..\1-architecture\Diagrams\container-diagram.mmd = ..\1-architecture\Diagrams\container-diagram.mmd
+		..\1-architecture\Diagrams\entity-relationship.mmd = ..\1-architecture\Diagrams\entity-relationship.mmd
+		..\1-architecture\Diagrams\system-context.mmd = ..\1-architecture\Diagrams\system-context.mmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{06E2FA70-6B5D-4B77-BFB8-7A23B7C28993}"
+	ProjectSection(SolutionItems) = preProject
+		..\1-architecture\Entities\Address.md = ..\1-architecture\Entities\Address.md
+		..\1-architecture\Entities\AnalyticsEvent.md = ..\1-architecture\Entities\AnalyticsEvent.md
+		..\1-architecture\Entities\AuditLog.md = ..\1-architecture\Entities\AuditLog.md
+		..\1-architecture\Entities\Banner.md = ..\1-architecture\Entities\Banner.md
+		..\1-architecture\Entities\Brand.md = ..\1-architecture\Entities\Brand.md
+		..\1-architecture\Entities\Category.md = ..\1-architecture\Entities\Category.md
+		..\1-architecture\Entities\ContactSubmission.md = ..\1-architecture\Entities\ContactSubmission.md
+		..\1-architecture\Entities\Currency.md = ..\1-architecture\Entities\Currency.md
+		..\1-architecture\Entities\FAQ.md = ..\1-architecture\Entities\FAQ.md
+		..\1-architecture\Entities\Inventory.md = ..\1-architecture\Entities\Inventory.md
+		..\1-architecture\Entities\Notification.md = ..\1-architecture\Entities\Notification.md
+		..\1-architecture\Entities\Order.md = ..\1-architecture\Entities\Order.md
+		..\1-architecture\Entities\OrderItem.md = ..\1-architecture\Entities\OrderItem.md
+		..\1-architecture\Entities\PasswordResetToken.md = ..\1-architecture\Entities\PasswordResetToken.md
+		..\1-architecture\Entities\Payment.md = ..\1-architecture\Entities\Payment.md
+		..\1-architecture\Entities\Product.md = ..\1-architecture\Entities\Product.md
+		..\1-architecture\Entities\ProductImage.md = ..\1-architecture\Entities\ProductImage.md
+		..\1-architecture\Entities\ProductVariant.md = ..\1-architecture\Entities\ProductVariant.md
+		..\1-architecture\Entities\Promotion.md = ..\1-architecture\Entities\Promotion.md
+		..\1-architecture\Entities\ReturnRefund.md = ..\1-architecture\Entities\ReturnRefund.md
+		..\1-architecture\Entities\Review.md = ..\1-architecture\Entities\Review.md
+		..\1-architecture\Entities\RolePermission.md = ..\1-architecture\Entities\RolePermission.md
+		..\1-architecture\Entities\Session.md = ..\1-architecture\Entities\Session.md
+		..\1-architecture\Entities\Shipment.md = ..\1-architecture\Entities\Shipment.md
+		..\1-architecture\Entities\ShoppingCart.md = ..\1-architecture\Entities\ShoppingCart.md
+		..\1-architecture\Entities\ShoppingCartItem.md = ..\1-architecture\Entities\ShoppingCartItem.md
+		..\1-architecture\Entities\SupportTicket.md = ..\1-architecture\Entities\SupportTicket.md
+		..\1-architecture\Entities\Tax.md = ..\1-architecture\Entities\Tax.md
+		..\1-architecture\Entities\User.md = ..\1-architecture\Entities\User.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-design", "2-design", "{8CBC807F-D60F-4A4C-BEF5-A8BB351B5967}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{87616996-C682-4BDC-9BAE-10DB2750B50B}"
+	ProjectSection(SolutionItems) = preProject
+		..\2-design\API\user-registration-openapi.yaml = ..\2-design\API\user-registration-openapi.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "review", "review", "{6A1E167E-8A03-4FE3-B708-CAB580130739}"
+	ProjectSection(SolutionItems) = preProject
+		..\2-design\API\review\user-registration-api-review.md = ..\2-design\API\review\user-registration-api-review.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{716F7AA1-6D61-4A71-9A94-817780D9B110}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp-dotnet-core-user-service", "csharp-dotnet-core-user-service", "{C33DF445-6A6E-4AB2-BF90-FE5B5B9B2555}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Class", "Class", "{073B897E-2761-4FC4-911A-64AD548A99CB}"
+	ProjectSection(SolutionItems) = preProject
+		..\2-design\Diagrams\csharp-dotnet-core-user-service\Class\user-registration-class-diagram.mmd = ..\2-design\Diagrams\csharp-dotnet-core-user-service\Class\user-registration-class-diagram.mmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sequence", "Sequence", "{CFD33D7D-090B-4455-9C5C-454ED6763100}"
+	ProjectSection(SolutionItems) = preProject
+		..\2-design\Diagrams\csharp-dotnet-core-user-service\Sequence\user-registration-sequence.mmd = ..\2-design\Diagrams\csharp-dotnet-core-user-service\Sequence\user-registration-sequence.mmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp-dotnet-core-user-service", "csharp-dotnet-core-user-service", "{637E7C51-DDA6-473D-ACA1-1A3E3E88F6B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Classes", "Classes", "{4A273F08-25B1-4435-B634-C5FBBE07C289}"
+	ProjectSection(SolutionItems) = preProject
+		..\2-design\csharp-dotnet-core-user-service\Classes\Address.md = ..\2-design\csharp-dotnet-core-user-service\Classes\Address.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\AddressRepository.md = ..\2-design\csharp-dotnet-core-user-service\Classes\AddressRepository.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\ApplicationDbContext.md = ..\2-design\csharp-dotnet-core-user-service\Classes\ApplicationDbContext.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\Configuration.md = ..\2-design\csharp-dotnet-core-user-service\Classes\Configuration.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\DatabaseContext.md = ..\2-design\csharp-dotnet-core-user-service\Classes\DatabaseContext.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EFCoreMappingAndErrorHandling.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EFCoreMappingAndErrorHandling.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EmailService.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EmailService.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationController.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationController.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationRequest.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationRequest.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationResponse.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationResponse.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationService.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationService.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationToken-Schema.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationToken-Schema.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationToken.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationToken.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationTokenRepository.md = ..\2-design\csharp-dotnet-core-user-service\Classes\EmailVerificationTokenRepository.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\ErrorResponse.md = ..\2-design\csharp-dotnet-core-user-service\Classes\ErrorResponse.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IAddressRepository.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IAddressRepository.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IEmailService.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IEmailService.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IEmailVerificationService.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IEmailVerificationService.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IEmailVerificationTokenRepository.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IEmailVerificationTokenRepository.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\ILogger.md = ..\2-design\csharp-dotnet-core-user-service\Classes\ILogger.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IPasswordHasher.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IPasswordHasher.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IUnitOfWork.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IUnitOfWork.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IUserRegistrationService.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IUserRegistrationService.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IUserRepository.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IUserRepository.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\IUserValidator.md = ..\2-design\csharp-dotnet-core-user-service\Classes\IUserValidator.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\Logger.md = ..\2-design\csharp-dotnet-core-user-service\Classes\Logger.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\MappingProfile.md = ..\2-design\csharp-dotnet-core-user-service\Classes\MappingProfile.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\PasswordHasher.md = ..\2-design\csharp-dotnet-core-user-service\Classes\PasswordHasher.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\PhoneNumber.md = ..\2-design\csharp-dotnet-core-user-service\Classes\PhoneNumber.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UniqueEmailSpecification.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UniqueEmailSpecification.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UnitOfWork.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UnitOfWork.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\User.md = ..\2-design\csharp-dotnet-core-user-service\Classes\User.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationController.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationController.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationControllerTests.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationControllerTests.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationRequest.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationRequest.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationResponse.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationResponse.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationService.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationService.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationServiceTests.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserRegistrationServiceTests.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserRepository.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserRepository.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserRepositoryTests.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserRepositoryTests.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserStatus.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserStatus.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\UserValidator.md = ..\2-design\csharp-dotnet-core-user-service\Classes\UserValidator.md
+		..\2-design\csharp-dotnet-core-user-service\Classes\ValidationService.md = ..\2-design\csharp-dotnet-core-user-service\Classes\ValidationService.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "review", "review", "{A03D7EEB-BC90-4A16-986D-01AD689FD92E}"
+	ProjectSection(SolutionItems) = preProject
+		..\2-design\review\user-registration-api-review.md = ..\2-design\review\user-registration-api-review.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{3E0CF3FC-0799-47AC-8ED9-127E895C9392}"
+	ProjectSection(SolutionItems) = preProject
+		..\db\cleanup.sql = ..\db\cleanup.sql
+		..\db\dev-db.sqlite3 = ..\db\dev-db.sqlite3
+		..\db\shopsphere-db.sqlite3 = ..\db\shopsphere-db.sqlite3
+		..\db\tables.sql = ..\db\tables.sql
+		..\db\test-db.sqlite3 = ..\db\test-db.sqlite3
+		..\db\test.sqlite3 = ..\db\test.sqlite3
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "end-end-tests", "end-end-tests", "{DD9B78A1-9E3F-46F6-866E-F4E480D3F5C4}"
+	ProjectSection(SolutionItems) = preProject
+		..\end-end-tests\.gitignore = ..\end-end-tests\.gitignore
+		..\end-end-tests\README.md = ..\end-end-tests\README.md
+		..\end-end-tests\behave.ini = ..\end-end-tests\behave.ini
+		..\end-end-tests\environment.py = ..\end-end-tests\environment.py
+		..\end-end-tests\requirements.txt = ..\end-end-tests\requirements.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{DAEE34B7-8324-43C3-AB00-84A1C2FFAE72}"
+	ProjectSection(SolutionItems) = preProject
+		..\end-end-tests\.github\copilot-instructions.md = ..\end-end-tests\.github\copilot-instructions.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db_scripts", "db_scripts", "{83F0740F-202C-485A-A229-49C7F86F4F05}"
+	ProjectSection(SolutionItems) = preProject
+		..\end-end-tests\db_scripts\cleanup.sql = ..\end-end-tests\db_scripts\cleanup.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "features", "features", "{0A0B67A4-4D1C-413A-928C-052A9703FFAF}"
+	ProjectSection(SolutionItems) = preProject
+		..\end-end-tests\features\another-feature.feature = ..\end-end-tests\features\another-feature.feature
+		..\end-end-tests\features\sample-feature.feature = ..\end-end-tests\features\sample-feature.feature
+		..\end-end-tests\features\user-registration.feature = ..\end-end-tests\features\user-registration.feature
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "helpers", "helpers", "{457BB15C-14E0-45FD-90D7-FFCB01AC2EBF}"
+	ProjectSection(SolutionItems) = preProject
+		..\end-end-tests\helpers\db_helper.py = ..\end-end-tests\helpers\db_helper.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{C33BEE0E-6208-4641-95CD-2CF333757B6F}"
+	ProjectSection(SolutionItems) = preProject
+		..\end-end-tests\pages\base_page.py = ..\end-end-tests\pages\base_page.py
+		..\end-end-tests\pages\google_page.py = ..\end-end-tests\pages\google_page.py
+		..\end-end-tests\pages\registration_page.py = ..\end-end-tests\pages\registration_page.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{94B3A7AE-9EF8-4F00-AF09-1F78BBA5646B}"
+	ProjectSection(SolutionItems) = preProject
+		..\end-end-tests\scripts\run-all-tests.bat = ..\end-end-tests\scripts\run-all-tests.bat
+		..\end-end-tests\scripts\run-all-tests.sh = ..\end-end-tests\scripts\run-all-tests.sh
+		..\end-end-tests\scripts\view-allure-report.bat = ..\end-end-tests\scripts\view-allure-report.bat
+		..\end-end-tests\scripts\view-allure-report.sh = ..\end-end-tests\scripts\view-allure-report.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "steps", "steps", "{3276C8CF-14C0-4552-B57F-37A3B68BDF7A}"
+	ProjectSection(SolutionItems) = preProject
+		..\end-end-tests\steps\sample_step.py = ..\end-end-tests\steps\sample_step.py
+		..\end-end-tests\steps\user_registration_steps.py = ..\end-end-tests\steps\user_registration_steps.py
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F9CEE4B-7266-AAB5-E2CD-997F68F443A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F9CEE4B-7266-AAB5-E2CD-997F68F443A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F9CEE4B-7266-AAB5-E2CD-997F68F443A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F9CEE4B-7266-AAB5-E2CD-997F68F443A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C469E6-EF3C-00F7-F7E2-BB0AA7DC517E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C469E6-EF3C-00F7-F7E2-BB0AA7DC517E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C469E6-EF3C-00F7-F7E2-BB0AA7DC517E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C469E6-EF3C-00F7-F7E2-BB0AA7DC517E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5ACC3D81-AAD6-4F2E-B53E-8AF6A177F472}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC6675D2-CA88-4A53-AE90-B89713C2C925} = {05063987-5BE9-4814-B22E-F6856FE3C07C}
+		{34D10163-6057-4953-982F-C0186A67C679} = {6E44391A-394F-4B6F-8238-CEABCCC97D72}
+		{6145CC25-5A07-4B2A-84B6-F0C37197860F} = {6E44391A-394F-4B6F-8238-CEABCCC97D72}
+		{06E2FA70-6B5D-4B77-BFB8-7A23B7C28993} = {6E44391A-394F-4B6F-8238-CEABCCC97D72}
+		{87616996-C682-4BDC-9BAE-10DB2750B50B} = {8CBC807F-D60F-4A4C-BEF5-A8BB351B5967}
+		{6A1E167E-8A03-4FE3-B708-CAB580130739} = {87616996-C682-4BDC-9BAE-10DB2750B50B}
+		{716F7AA1-6D61-4A71-9A94-817780D9B110} = {8CBC807F-D60F-4A4C-BEF5-A8BB351B5967}
+		{C33DF445-6A6E-4AB2-BF90-FE5B5B9B2555} = {716F7AA1-6D61-4A71-9A94-817780D9B110}
+		{073B897E-2761-4FC4-911A-64AD548A99CB} = {C33DF445-6A6E-4AB2-BF90-FE5B5B9B2555}
+		{CFD33D7D-090B-4455-9C5C-454ED6763100} = {C33DF445-6A6E-4AB2-BF90-FE5B5B9B2555}
+		{637E7C51-DDA6-473D-ACA1-1A3E3E88F6B7} = {8CBC807F-D60F-4A4C-BEF5-A8BB351B5967}
+		{4A273F08-25B1-4435-B634-C5FBBE07C289} = {637E7C51-DDA6-473D-ACA1-1A3E3E88F6B7}
+		{A03D7EEB-BC90-4A16-986D-01AD689FD92E} = {8CBC807F-D60F-4A4C-BEF5-A8BB351B5967}
+		{DAEE34B7-8324-43C3-AB00-84A1C2FFAE72} = {DD9B78A1-9E3F-46F6-866E-F4E480D3F5C4}
+		{83F0740F-202C-485A-A229-49C7F86F4F05} = {DD9B78A1-9E3F-46F6-866E-F4E480D3F5C4}
+		{0A0B67A4-4D1C-413A-928C-052A9703FFAF} = {DD9B78A1-9E3F-46F6-866E-F4E480D3F5C4}
+		{457BB15C-14E0-45FD-90D7-FFCB01AC2EBF} = {DD9B78A1-9E3F-46F6-866E-F4E480D3F5C4}
+		{C33BEE0E-6208-4641-95CD-2CF333757B6F} = {DD9B78A1-9E3F-46F6-866E-F4E480D3F5C4}
+		{94B3A7AE-9EF8-4F00-AF09-1F78BBA5646B} = {DD9B78A1-9E3F-46F6-866E-F4E480D3F5C4}
+		{3276C8CF-14C0-4552-B57F-37A3B68BDF7A} = {DD9B78A1-9E3F-46F6-866E-F4E480D3F5C4}
+	EndGlobalSection
+EndGlobal
