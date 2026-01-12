@@ -5,11 +5,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    // This defines the port React itself runs on
+    port: 5173,
+    strictPort: true,
     proxy: {
+      // Directs any request starting with "/api" to your .NET backend
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:5000',
         changeOrigin: true,
-      },
-    },
-  },
+        secure: false
+      }
+    }
+  }
 })
