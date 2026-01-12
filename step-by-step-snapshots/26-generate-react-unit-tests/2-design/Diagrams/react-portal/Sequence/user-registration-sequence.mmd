@@ -1,0 +1,42 @@
+%% GH Copilot code - starts
+%% Sequence diagram for User Registration UI (React Portal)
+%% Components referenced from 2-design/react-portal/Components
+
+sequenceDiagram
+    participant User
+    participant RegistrationForm
+    participant RegistrationService
+    participant ApiClient
+    participant ApiEndpoints
+    participant AnalyticsTracker
+    participant FormSchema
+    participant FormErrorMessage
+    participant LoadingSpinner
+
+    User->>RegistrationForm: Fill registration fields
+    RegistrationForm->>FormSchema: Validate input
+    FormSchema-->>RegistrationForm: Validation result
+    alt Validation fails
+        RegistrationForm->>FormErrorMessage: Show error
+        FormErrorMessage-->>User: Display error message
+    else Validation passes
+        RegistrationForm->>LoadingSpinner: Show spinner
+        RegistrationForm->>RegistrationService: Submit registration data
+        RegistrationService->>ApiClient: Send API request
+        ApiClient->>ApiEndpoints: Get registration endpoint
+        ApiEndpoints-->>ApiClient: Return endpoint URL
+        ApiClient->>ApiEndpoints: POST registration data
+        ApiEndpoints-->>ApiClient: Return API response
+        ApiClient-->>RegistrationService: Return result
+        RegistrationService-->>RegistrationForm: Success/Failure
+        RegistrationForm->>LoadingSpinner: Hide spinner
+        alt Registration successful
+            RegistrationForm->>AnalyticsTracker: Track registration event
+            AnalyticsTracker-->>RegistrationForm: Event tracked
+            RegistrationForm-->>User: Show success message
+        else Registration failed
+            RegistrationForm->>FormErrorMessage: Show error
+            FormErrorMessage-->>User: Display error message
+        end
+    end
+%% GH Copilot code - end
