@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "end-end-tests"
+		},
+		{
+			"path": "0-requirements"
+		},
+		{			
+			"path": "1-architecture"
+		},
+		{			
+			"path": "2-design"
+		},
+		{
+			"path": "db"
+		}		
+	]
+}

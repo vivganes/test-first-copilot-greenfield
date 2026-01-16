@@ -1,0 +1,166 @@
+---
+title: User Registration Microservice Class Diagram
+---
+
+classDiagram
+    class User {
+        +UUID Id
+        +string Name
+        +string Email
+        +string Password
+        +string PhoneNumber
+        +bool EmailVerified
+        +DateTime EmailVerifiedAt
+        +string Role
+        +string Status
+        +DateTime CreatedAt
+        +DateTime UpdatedAt
+        +DateTime LastLogin
+        +DateTime DeletedAt
+        +bool Anonymized
+        +List<Address> Addresses
+        +void SetPassword(string password)
+        +void VerifyEmail()
+        +void AddAddress(Address address)
+    }
+    class Address {
+        +UUID Id
+        +UUID UserId
+        +string Type
+        +string Line1
+        +string Line2
+        +string City
+        +string State
+        +string PostalCode
+        +string Country
+        +bool IsDefault
+        +DateTime CreatedAt
+        +DateTime UpdatedAt
+        +string PhoneNumber
+        +bool Validate()
+    }
+    class UserRegistrationRequest {
+        +string Email
+        +string Password
+        +string Name
+        +string PhoneNumber
+        +Address Address
+        +bool Validate()
+    }
+    class UserRegistrationResponse {
+        +string Message
+        +string UserId
+        +bool EmailVerified
+        +string Status
+        +string Role
+    }
+    class ErrorResponse {
+        +string Error
+        +string Details
+    }
+    class IUserRepository {
+        +void AddUser(User user)
+        +User GetUserByEmail(string email)
+        +void UpdateUser(User user)
+        +bool EmailExists(string email)
+    }
+    class UserRepository {
+        +ApplicationDbContext DbContext
+        +void AddUser(User user)
+        +User GetUserByEmail(string email)
+        +void UpdateUser(User user)
+        +bool EmailExists(string email)
+    }
+    class IUnitOfWork {
+        +void Commit()
+        +void Rollback()
+    }
+    class UnitOfWork {
+        +ApplicationDbContext DbContext
+        +void Commit()
+        +void Rollback()
+    }
+    class IUserRegistrationService {
+        +UserRegistrationResponse RegisterUser(UserRegistrationRequest request)
+    }
+    class UserRegistrationService {
+        +IUserRepository UserRepository
+        +IPasswordHasher PasswordHasher
+        +IEmailService EmailService
+        +IUserValidator UserValidator
+        +UserRegistrationResponse RegisterUser(UserRegistrationRequest request)
+    }
+    class IEmailService {
+        +void SendVerificationEmail(User user)
+    }
+    class EmailService {
+        +void SendVerificationEmail(User user)
+    }
+    class UserRegistrationController {
+        +IActionResult RegisterUser(UserRegistrationRequest request)
+    }
+    class IUserValidator {
+        +bool Validate(UserRegistrationRequest request)
+    }
+    class UserValidator {
+        +bool Validate(UserRegistrationRequest request)
+    }
+    class IPasswordHasher {
+        +string HashPassword(string password)
+        +bool VerifyPassword(string hash, string password)
+    }
+    class PasswordHasher {
+        +string HashPassword(string password)
+        +bool VerifyPassword(string hash, string password)
+    }
+    class ApplicationDbContext {
+        +DbSet<User> Users
+        +DbSet<Address> Addresses
+        +int SaveChanges()
+    }
+    class MappingProfile {
+        +void Configure()
+    }
+    class UserRegistrationServiceTests {
+        +void TestRegisterUser_ValidRequest()
+        +void TestRegisterUser_InvalidEmail()
+        +void TestRegisterUser_EmailAlreadyExists()
+    }
+    class UserRepositoryTests {
+        +void TestAddUser()
+        +void TestGetUserByEmail()
+        +void TestEmailExists()
+    }
+    class UserRegistrationControllerTests {
+        +void TestRegisterUser_Success()
+        +void TestRegisterUser_InvalidInput()
+        +void TestRegisterUser_EmailAlreadyExists()
+    }
+
+    User "1" -- "*" Address : has
+    Address "*" -- "1" User : belongs to
+    UserRegistrationController "1" -- "1" UserRegistrationService : uses
+    UserRegistrationService "1" -- "1" IUserRepository : uses
+    UserRegistrationService "1" -- "1" IPasswordHasher : uses
+    UserRegistrationService "1" -- "1" IEmailService : uses
+    UserRegistrationService "1" -- "1" IUserValidator : uses
+    UserRepository "1" -- "1" ApplicationDbContext : uses
+    UnitOfWork "1" -- "1" ApplicationDbContext : uses
+    UserRepository "1" -- "1" IUserRepository : implements
+    UnitOfWork "1" -- "1" IUnitOfWork : implements
+    UserRegistrationService "1" -- "1" IUserRegistrationService : implements
+    EmailService "1" -- "1" IEmailService : implements
+    UserValidator "1" -- "1" IUserValidator : implements
+    PasswordHasher "1" -- "1" IPasswordHasher : implements
+    MappingProfile "1" -- "*" User : maps
+    MappingProfile "1" -- "*" Address : maps
+    ApplicationDbContext "1" -- "*" User : manages
+    ApplicationDbContext "1" -- "*" Address : manages
+    UserRegistrationController "1" -- "1" UserRegistrationRequest : receives
+    UserRegistrationController "1" -- "1" UserRegistrationResponse : returns
+    UserRegistrationController "1" -- "1" ErrorResponse : returns
+    UserRegistrationServiceTests "1" -- "1" UserRegistrationService : tests
+    UserRepositoryTests "1" -- "1" UserRepository : tests
+    UserRepositoryTests "1" -- "1" ApplicationDbContext : uses
+    UserRegistrationControllerTests "1" -- "1" UserRegistrationController : tests
+    UserRegistrationControllerTests "1" -- "1" UserRegistrationService : uses

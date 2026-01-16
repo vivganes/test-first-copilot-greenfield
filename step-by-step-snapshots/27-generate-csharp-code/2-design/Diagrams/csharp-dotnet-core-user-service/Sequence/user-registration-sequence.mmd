@@ -1,0 +1,30 @@
+%% GH Copilot code - starts
+%% Sequence diagram for User Registration API
+%% Classes involved are outlined in 2-design/csharp-dotnet-core-user-service/Classes
+
+sequenceDiagram
+    participant User
+    participant RegistrationPage
+    participant UserService
+    participant ApplicationDbContext
+    participant EmailService
+    participant IPasswordHasher
+    participant IEmailService
+    participant IAddressRepository
+    participant AddressRepository
+
+    User->>RegistrationPage: Submit registration form
+    RegistrationPage->>UserService: Validate and process registration
+    UserService->>IPasswordHasher: Hash password
+    IPasswordHasher-->>UserService: Return hashed password
+    UserService->>IAddressRepository: Validate address
+    IAddressRepository-->>UserService: Return address validation result
+    UserService->>ApplicationDbContext: Save user data
+    ApplicationDbContext-->>UserService: Confirm user saved
+    UserService->>IEmailService: Send confirmation email
+    IEmailService->>EmailService: Send email
+    EmailService-->>IEmailService: Email sent
+    IEmailService-->>UserService: Confirmation sent
+    UserService-->>RegistrationPage: Registration success
+    RegistrationPage-->>User: Show success message
+%% GH Copilot code - end

@@ -1,0 +1,192 @@
+# GH Copilot code - starts
+openapi: 3.0.3
+info:
+  title: ShopSphere User Registration API
+  version: 1.0.0
+  description: |
+    API for user registration, email verification, and error handling in ShopSphere.
+    Covers all positive, negative, and corner cases as per Gherkin scenarios and database schema.
+servers:
+  - url: /api/v1
+paths:
+  /users/register:
+    post:
+      summary: Register a new user
+      description: |
+        Registers a new user with required details. Email verification is required before login.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - name
+                - phoneNumber
+              properties:
+                email:
+                  type: string
+                  format: email
+                  maxLength: 255
+                  pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+                  maxLength: 255
+                  pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-={}:;'<>,.?]).{8,255}$"
+                  description: "Must contain at least one uppercase, one lowercase, one digit, one special character."
+                name:
+                  type: string
+                  maxLength: 255
+                  pattern: "^[A-Za-z ]+$"
+                  description: "Letters and spaces only."
+                phoneNumber:
+                  type: string
+                  maxLength: 20
+                  pattern: "^\\+?[0-9\\- ]{10,20}$"
+                  description: "Must be at least 10 digits, may include country code."
+                address:
+                  type: object
+                  required:
+                    - type
+                    - line1
+                    - city
+                    - state
+                    - postalCode
+                    - country
+                    - isDefault
+                  properties:
+                    type:
+                      type: string
+                      enum: [Shipping, Billing]
+                    line1:
+                      type: string
+                      maxLength: 255
+                    line2:
+                      type: string
+                      maxLength: 255
+                    city:
+                      type: string
+                      maxLength: 255
+                    state:
+                      type: string
+                      maxLength: 255
+                    postalCode:
+                      type: string
+                      maxLength: 20
+                    country:
+                      type: string
+                      maxLength: 255
+                    isDefault:
+                      type: boolean
+                    phoneNumber:
+                      type: string
+                      maxLength: 20
+                      pattern: "^\\+?[0-9\\- ]{10,20}$"
+                      description: "Optional, recommended for delivery."
+                  description: "Optional address for onboarding. Can be omitted."
+      responses:
+        '201':
+          description: User registered successfully, verification email sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Please check your email to verify your account
+                  userId:
+                    type: string
+                  emailVerified:
+                    type: boolean
+                    example: false
+                  status:
+                    type: string
+                    example: Active
+                  role:
+                    type: string
+                    example: Customer
+                    description: "User is always onboarded as Customer."
+        '400':
+          description: Invalid input (missing/invalid fields)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Email already registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too many registration attempts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/verify-email:
+    post:
+      summary: Verify user email
+      description: Verifies a user's email using a token sent via email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+                  description: "Email verification token. Expires in 24 hours."
+      responses:
+        '200':
+          description: Email verified successfully, account activated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Email verified successfully
+                  emailVerified:
+                    type: boolean
+                    example: true
+                  status:
+                    type: string
+                    example: Active
+        '400':
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Email already verified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        details:
+          type: string
+# GH Copilot code - end

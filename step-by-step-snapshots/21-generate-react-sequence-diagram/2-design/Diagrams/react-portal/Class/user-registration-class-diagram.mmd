@@ -1,0 +1,161 @@
+---
+title: User Registration UI Class Diagram
+---
+
+%%
+%% GH Copilot code - starts
+%%
+
+%% Mermaid Class Diagram for User Registration UI
+%% Components: RegistrationForm, RegistrationField, PasswordField, PhoneNumberField, AddressField, SubmitButton, SuccessMessage, FormErrorMessage, LoadingSpinner, RegistrationService, apiClient, ApiEndpoints, FormSchema, validationUtils, useRegistrationForm, useApi
+
+classDiagram
+    %% Main Form
+    class RegistrationForm {
+        fields
+        onSubmit
+        loading
+        error
+        success
+        handleChange()
+        handleSubmit()
+        resetForm()
+    }
+    RegistrationForm --> RegistrationField : uses
+    RegistrationForm --> PasswordField : uses
+    RegistrationForm --> PhoneNumberField : uses
+    RegistrationForm --> AddressField : uses
+    RegistrationForm --> SubmitButton : uses
+    RegistrationForm --> SuccessMessage : shows
+    RegistrationForm --> FormErrorMessage : shows
+    RegistrationForm --> LoadingSpinner : shows
+    RegistrationForm --> useRegistrationForm : uses
+    RegistrationForm --> FormSchema : uses
+    RegistrationForm --> RegistrationService : uses
+
+    %% Field Components
+    class RegistrationField {
+        name
+        label
+        type
+        value
+        onChange
+        error
+        required
+        handleInputChange()
+    }
+    RegistrationField --> FormErrorMessage : shows
+    RegistrationField --> validationUtils : uses
+
+    class PasswordField {
+        value
+        onChange
+        error
+        showStrength
+        required
+        toggleShowPassword()
+        calculateStrength()
+    }
+    PasswordField --> FormErrorMessage : shows
+    PasswordField --> usePasswordValidation : uses
+
+    class PhoneNumberField {
+        value
+        onChange
+        error
+        required
+        formatPhoneNumber()
+        validatePhoneNumber()
+    }
+    PhoneNumberField --> FormErrorMessage : shows
+    PhoneNumberField --> validationUtils : uses
+
+    class AddressField {
+        value
+        onChange
+        error
+        required
+        handleFieldChange()
+    }
+    AddressField --> FormErrorMessage : shows
+    AddressField --> validationUtils : uses
+
+    class SubmitButton {
+        onClick
+        disabled
+        loading
+        label
+        handleClick()
+    }
+    SubmitButton --> LoadingSpinner : shows
+
+    class SuccessMessage {
+        message
+    }
+
+    class FormErrorMessage {
+        message
+    }
+
+    class LoadingSpinner {
+        visible
+    }
+
+    %% Form Logic
+    class useRegistrationForm {
+        values
+        errors
+        loading
+        success
+        handleChange()
+        handleSubmit()
+        resetForm()
+    }
+    useRegistrationForm --> validationUtils : uses
+    useRegistrationForm --> RegistrationService : uses
+
+    class FormSchema {
+        schema
+        validate()
+    }
+    FormSchema --> validationUtils : uses
+
+    class validationUtils {
+        validateEmail()
+        validatePassword()
+        validateAddress()
+        validatePhone()
+    }
+
+    %% API Layer
+    class RegistrationService {
+        registerUser()
+        checkEmailUnique()
+    }
+    RegistrationService --> apiClient : uses
+    RegistrationService --> ApiEndpoints : uses
+    RegistrationService --> useApi : uses
+
+    class apiClient {
+        baseUrl
+        post()
+        get()
+        setAuthToken()
+    }
+
+    class ApiEndpoints {
+        REGISTER_USER
+        CHECK_EMAIL
+    }
+
+    class useApi {
+        loading
+        error
+        data
+        request()
+        reset()
+    }
+
+%%
+%% GH Copilot code - end
+%%

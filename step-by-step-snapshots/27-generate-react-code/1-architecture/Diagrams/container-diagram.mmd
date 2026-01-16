@@ -1,0 +1,82 @@
+---
+title: C4 Container Diagram
+---
+
+flowchart TB
+    subgraph Storefront
+        StorefrontUI["Storefront UI"]
+        AdminUI["Admin UI"]
+        ShoppingCartService["Shopping Cart Service"]
+        ProductService["Product Service"]
+        ReviewRatingService["Review & Rating Service"]
+        PromotionService["Promotion Service"]
+        BannerContentManagementService["Banner Content Management Service"]
+        SearchIndexingService["Search Indexing Service"]
+    end
+
+    subgraph Seller
+        SellerDashboardUI["Seller Dashboard UI"]
+        InventoryService["Inventory Service"]
+        OrderService["Order Service"]
+        PaymentService["Payment Service"]
+        ShippingService["Shipping Service"]
+        AnalyticsAuditService["Analytics & Audit Service"]
+        FileDocumentManagementService["File/Document Management Service"]
+        ComplianceRegionalizationService["Compliance & Regionalization Service"]
+    end
+
+    subgraph Platform
+        APIGateway["API Gateway"]
+        AuthenticationService["Authentication Service"]
+        UserService["User Service"]
+        NotificationService["Notification Service"]
+        SupportService["Support Service"]
+        QueueBackgroundProcessingService["Queue/Background Processing Service"]
+        ScheduledTaskBackgroundJobService["Scheduled Task/Background Job Service"]
+        FraudDetectionIntegrationService["Fraud Detection Integration Service"]
+        CurrencyExchangeRateService["Currency Exchange Rate Service"]
+    end
+
+    StorefrontUI --> APIGateway
+    AdminUI --> APIGateway
+    SellerDashboardUI --> APIGateway
+    APIGateway --> AuthenticationService
+    APIGateway --> UserService
+    APIGateway --> ProductService
+    APIGateway --> OrderService
+    APIGateway --> PaymentService
+    APIGateway --> InventoryService
+    APIGateway --> ShippingService
+    APIGateway --> NotificationService
+    APIGateway --> SupportService
+    APIGateway --> ReviewRatingService
+    APIGateway --> PromotionService
+    APIGateway --> BannerContentManagementService
+    APIGateway --> SearchIndexingService
+    APIGateway --> FileDocumentManagementService
+    APIGateway --> ComplianceRegionalizationService
+    APIGateway --> AnalyticsAuditService
+    APIGateway --> QueueBackgroundProcessingService
+    APIGateway --> ScheduledTaskBackgroundJobService
+    APIGateway --> FraudDetectionIntegrationService
+    APIGateway --> CurrencyExchangeRateService
+
+    ShoppingCartService --> ProductService
+    ShoppingCartService --> InventoryService
+    OrderService --> PaymentService
+    OrderService --> InventoryService
+    OrderService --> ShippingService
+    PaymentService --> FraudDetectionIntegrationService
+    PaymentService --> CurrencyExchangeRateService
+    NotificationService --> UserService
+    NotificationService --> SupportService
+    AnalyticsAuditService --> OrderService
+    AnalyticsAuditService --> PaymentService
+    AnalyticsAuditService --> UserService
+    QueueBackgroundProcessingService --> ScheduledTaskBackgroundJobService
+    ReviewRatingService --> ProductService
+    PromotionService --> ProductService
+    BannerContentManagementService --> ProductService
+    SearchIndexingService --> ProductService
+    FileDocumentManagementService --> UserService
+    ComplianceRegionalizationService --> UserService
